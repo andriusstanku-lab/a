@@ -5,7 +5,7 @@ Pagal: Akademinių rašto darbų metodiniai nurodymai (VU Kauno fakultetas, Info
 """
 
 from docx import Document
-from docx.shared import Pt, Cm, Mm, RGBColor
+from docx.shared import Pt, Cm, Mm, RGBColor, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.enum.section import WD_SECTION
 from docx.enum.table import WD_ALIGN_VERTICAL, WD_ROW_HEIGHT_RULE
@@ -150,6 +150,26 @@ def add_source_note(doc, text):
                          space_before=2, space_after=12)
     r = p.add_run(text)
     set_run_font(r, size=FONT_SIZE_SOURCE, italic=True)
+
+
+def add_picture(doc, image_path, width_cm=15.5):
+    """Įterpia paveikslą centre puslapio."""
+    p = doc.add_paragraph()
+    set_paragraph_format(p, alignment=WD_ALIGN_PARAGRAPH.CENTER,
+                         line_spacing=1.0, first_line_indent=None,
+                         space_before=8, space_after=0)
+    run = p.add_run()
+    run.add_picture(image_path, width=Cm(width_cm))
+
+
+def add_picture_caption(doc, number_text, title_text):
+    """Paveikslo numeris ir pavadinimas po paveikslu, centre, 11pt Bold"""
+    p = doc.add_paragraph()
+    set_paragraph_format(p, alignment=WD_ALIGN_PARAGRAPH.CENTER,
+                         line_spacing=1.0, first_line_indent=None,
+                         space_before=4, space_after=2)
+    r = p.add_run(f"{number_text}. {title_text}")
+    set_run_font(r, size=FONT_SIZE_TABLE_TITLE, bold=True)
 
 
 def add_field(paragraph, field_code):
@@ -348,7 +368,9 @@ def add_list_item(doc, text):
 add_list_item(doc, "Apžvelgti IS ir DB sampratą bei pagrindinius kūrimo aspektus.")
 add_list_item(doc, "Atlikti IS ir DB reikalavimų palyginamąją analizę pateikiant struktūrinę lentelę.")
 add_list_item(doc, "Išanalizuoti realų pavyzdį – Lietuvos elektroninės prekybos sistemą Pigu.lt ir logistikos paslaugų teikėjo Omniva Lietuva duomenų bazę.")
-add_list_item(doc, "Aprašyti IS ir DB reikalavimų rinkimo šablonus, naudojamus praktikoje.")
+add_list_item(doc, "Pateikti vaizdinę medžiagą – sekų ir esybių–ryšių diagramas, iliustruojančias IS ir DB sąveiką.")
+add_list_item(doc, "Aprašyti BDAR „teisės būti pamirštam\" pavyzdį, parodantį, kaip IS lygmens reikalavimas virsta DB lygmens techniniu sprendimu.")
+add_list_item(doc, "Aprašyti IS ir DB reikalavimų rinkimo šablonus bei reikalavimų atsekamumo matricos naudą praktikoje.")
 
 add_body_paragraph(doc,
     "Darbo metodai: literatūros (mokslinių straipsnių, internetinių šaltinių) "
@@ -526,8 +548,14 @@ add_body_paragraph(doc,
     "per API perduoda siuntimo duomenis Omniva sistemai, o pastaroji "
     "užregistruoja siuntą savo DB ir grąžina sekimo numerį atgal. Vartotojas "
     "tada gali sekti siuntą tiek Pigu.lt platformoje, tiek Omniva tinklalapyje "
-    "ar mobiliojoje programėlėje."
+    "ar mobiliojoje programėlėje. Žemiau pateikta sekų diagrama (žr. 1 pav.) "
+    "iliustruoja šios sąveikos eigą."
 )
+
+# 1 paveikslas - Sekų diagrama
+add_picture(doc, "/projects/sandbox/PU1_darbas/img1_seku_diagrama.png", width_cm=15.5)
+add_picture_caption(doc, "1 pav", "Pigu.lt ir Omniva sąveikos sekų diagrama")
+add_source_note(doc, "Šaltinis: sudaryta autoriaus.")
 
 
 # 2.3 — Rašytinė analizė (150–200 žodžių)
@@ -560,6 +588,43 @@ add_body_paragraph(doc,
     "pateikiama vartotojui, o DB reikalavimai nustato, kaip ji turi būti "
     "saugoma, struktūruojama ir apsaugota. Abi reikalavimų grupės yra "
     "vienodai svarbios kuriant patikimą skaitmeninę paslaugą."
+)
+
+
+# 2.4 — Saugumo reikalavimų pavyzdys (BDAR)
+add_h2(doc, "2.4. Saugumo reikalavimų atvejis: BDAR „teisė būti pamirštam\"")
+
+add_body_paragraph(doc,
+    "Vienas iš geriausių pavyzdžių, kaip aukšto lygio IS reikalavimas "
+    "transformuojamas į konkretų DB sprendimą, yra Bendrojo duomenų "
+    "apsaugos reglamento (BDAR) 17 straipsnyje numatyta „teisė būti "
+    "pamirštam\" (angl. right to be forgotten). Šis reikalavimas iš pradžių "
+    "atsiranda kaip teisinis ir vartotojo lygio reikalavimas, vėliau "
+    "tampantis IS funkciniu reikalavimu, ir galiausiai – konkrečia DB "
+    "operacija."
+)
+
+add_body_paragraph(doc,
+    "IS lygmenyje šis reikalavimas reiškia, kad vartotojas savo paskyros "
+    "nustatymuose turi turėti mygtuką „Ištrinti paskyrą\", o sistema "
+    "privalo užtikrinti, kad po šio veiksmo vartotojo asmens duomenys būtų "
+    "pašalinti. Tačiau DB lygmenyje sprendimas dažnai būna sudėtingesnis: "
+    "tiesiog ištrinti įrašą iš lentelės „klientas\" gali pažeisti duomenų "
+    "vientisumą (pvz., užsakymų istoriją, kuri reikalinga apskaitos arba "
+    "mokesčių reikalavimams)."
+)
+
+add_body_paragraph(doc,
+    "Praktinis sprendimas DB lygmenyje paprastai apima asmens duomenų "
+    "anonimizavimą arba pseudonimizavimą: tokie laukai kaip vardas, "
+    "pavardė, el. pašto adresas, telefono numeris ar adresas pakeičiami "
+    "neutraliomis reikšmėmis (pvz., „Ištrintas vartotojas\"), tuo tarpu "
+    "užsakymų ir mokėjimų istorija išlaikoma, tačiau be galimybės "
+    "atsekti konkretų asmenį. Užsakymo lentelėje išorinis raktas į klientą "
+    "gali būti pakeistas į specialų techninį identifikatorių, "
+    "išsaugant ryšių vientisumą. Tai parodo, kaip vienas IS reikalavimas "
+    "gali turėti kelias DB lygmens įgyvendinimo galimybes – "
+    "kiekviena su savo techniniais ir teisiniais kompromisais."
 )
 
 
@@ -638,6 +703,18 @@ add_bullet(doc,
     "nuo DBVS, o fizinė schema – konkretų įgyvendinimą pasirinktoje DBVS."
 )
 
+add_body_paragraph(doc,
+    "Norint geriau iliustruoti, kaip ERD šablonas naudojamas praktikoje, "
+    "antroje paveiksle (žr. 2 pav.) pateikiamas supaprastintas e. prekybos "
+    "ir logistikos duomenų bazės ER modelis su pagrindinėmis esybėmis ir "
+    "jų ryšiais."
+)
+
+# 2 paveikslas - ER diagrama
+add_picture(doc, "/projects/sandbox/PU1_darbas/img2_er_diagrama.png", width_cm=15.5)
+add_picture_caption(doc, "2 pav", "Supaprastinta e. prekybos ir logistikos DB ER diagrama")
+add_source_note(doc, "Šaltinis: sudaryta autoriaus.")
+
 # 3.3
 add_h2(doc, "3.3. Šablonų reikšmė reikalavimų rinkimui")
 
@@ -656,6 +733,41 @@ add_body_paragraph(doc,
     "nuo abstrakčių verslo poreikių prie konkretaus techninio sprendimo. "
     "Pasirinkti šablonai turi atitikti projekto mastą, naudojamą "
     "metodologiją bei komandos kompetenciją."
+)
+
+
+# 3.4 — Reikalavimų atsekamumas
+add_h2(doc, "3.4. Reikalavimų atsekamumas")
+
+add_body_paragraph(doc,
+    "Reikalavimų atsekamumas (angl. requirements traceability) – tai "
+    "praktika, leidžianti susieti aukšto lygio verslo reikalavimus su "
+    "konkrečiais techniniais sprendimais ir testavimo atvejais. Pagrindinė "
+    "priemonė – reikalavimų atsekamumo matrica (angl. Requirements "
+    "Traceability Matrix, RTM), kurioje stulpeliuose pateikiami verslo "
+    "reikalavimai, IS funkciniai reikalavimai, DB elementai (lentelės, "
+    "laukai) bei testavimo atvejai."
+)
+
+add_body_paragraph(doc,
+    "Pavyzdžiui, BDAR teisė būti pamirštam, aprašyta 2.4 poskyryje, "
+    "atsekamumo matricoje galėtų atrodyti taip: verslo reikalavimas "
+    "„Užtikrinti vartotojo asmens duomenų pašalinimą\" → IS reikalavimas "
+    "„Ištrinti paskyros funkcionalumas vartotojo profilio puslapyje\" → "
+    "DB pakeitimai „Lentelės „klientas\" laukų anonimizavimas, ryšių "
+    "atnaujinimas užsakymų lentelėje\" → testavimo atvejai „Patikrinti, "
+    "ar po paskyros ištrynimo vartotojo duomenys nebematomi, bet užsakymų "
+    "istorija išlieka anonimizuota\"."
+)
+
+add_body_paragraph(doc,
+    "Atsekamumo matricos naudojimas leidžia kūrimo komandai aiškiai "
+    "matyti, kuris verslo reikalavimas yra įgyvendintas tam tikrame "
+    "kodo ar duomenų bazės sluoksnyje, ir užtikrinti, kad nė vienas "
+    "reikalavimas nebūtų pamirštas. Tai ypač svarbu didelės apimties "
+    "projektuose ir reglamentuojamose pramonės šakose, kur kiekvienas "
+    "techninis sprendimas privalo būti pagrįstas konkrečiu verslo arba "
+    "teisiniu reikalavimu."
 )
 
 
@@ -687,6 +799,13 @@ add_list_item(doc,
     "Stories, ERD, duomenų žodynas) padeda struktūrizuotai dokumentuoti "
     "reikalavimus, sumažina projektų klaidų riziką ir užtikrina aukštesnę "
     "kuriamos sistemos kokybę."
+)
+add_list_item(doc,
+    "Praktiniai pavyzdžiai (BDAR „teisė būti pamirštam\") rodo, kaip "
+    "abstraktus verslo reikalavimas tampa konkrečiu DB techniniu sprendimu "
+    "(asmens duomenų anonimizavimu) – todėl reikalavimų atsekamumo matrica "
+    "yra svarbi priemonė, užtikrinanti ryšį tarp verslo poreikių ir "
+    "techninio įgyvendinimo bei mažinanti klaidų riziką."
 )
 
 
