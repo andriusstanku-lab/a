@@ -599,7 +599,12 @@ def add_chapter_3(doc):
         "Forma išbandyta - sukurti trys nauji įrašai, redaguoti egzistuojantys "
         "(pakeisti aprašymai), pašalinti vienas testinis įrašas. Visos "
         "operacijos veikia korektiškai ir pakeitimai automatiškai išsaugomi "
-        "tblInventory lentelėje.")
+        "tblInventory lentelėje. Sukurtos formos vaizdas pateiktas "
+        "7 paveiksle (žr. 7 pav.).")
+    add_image(doc, "img10_form_inventory.png", width_cm=14.0)
+    add_fig_caption(doc, "7 pav",
+                    "DB3 - frmInventory forma duomenų įvedimui (4 laukai)")
+    add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_h2(doc, "3.3. Antra sukurta forma - Užsakymų peržiūra")
     add_p(doc,
@@ -614,10 +619,15 @@ def add_chapter_3(doc):
         "Pakoreguota forma vartotojui suteikia daugiau verslo informacijos - "
         "matoma ne tik prekės identifikacija, bet ir komercinė informacija "
         "(kaina, kilmė, paskutinis užsakymas). Forma išbandyta tomis pačiomis "
-        "operacijomis kaip ir pirma. Apibendrinant trečiąjį skyrių galima "
+        "operacijomis kaip ir pirma. Antrosios formos vaizdas pateiktas "
+        "8 paveiksle (žr. 8 pav.). Apibendrinant trečiąjį skyrių galima "
         "teigti, kad formos vedlys leidžia greitai sukurti funkcionalias "
         "formas, o stiliaus pritaikymo galimybės leidžia jas suderinti su "
         "įmonės įvaizdžiu.")
+    add_image(doc, "img11_form_inventory_extended.png", width_cm=14.0)
+    add_fig_caption(doc, "8 pav",
+                    "DB3 - frmInventoryExtended forma su 7 laukais")
+    add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
 
 def add_chapter_4(doc):
@@ -656,13 +666,13 @@ def add_chapter_4(doc):
         "tblInventory).")
 
     add_p(doc,
-        "Modifikuotos užklausos rezultatas pateiktas 7 paveiksle (žr. 7 pav.). "
+        "Modifikuotos užklausos rezultatas pateiktas 9 paveiksle (žr. 9 pav.). "
         "Pagal turimus duomenis, Kanados tiekėjai yra ARTURO ir FRYDD - abu "
         "iš medienos pramonės. Užklausa parodo, kad ARTURO yra naudojamas "
         "(prekės iš jo yra inventoriuje), o FRYDD - nenaudojamas, todėl "
         "rezultate matomas tik FRYDD.")
     add_image(doc, "img7_qry_unused.png", width_cm=15.0)
-    add_fig_caption(doc, "7 pav", "qryUnusedSuppliers (Kanada) rezultatas")
+    add_fig_caption(doc, "9 pav", "qryUnusedSuppliers (Kanada) rezultatas")
     add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_h2(doc, "4.3. Formos frmSuppliers analogas")
@@ -681,7 +691,12 @@ def add_chapter_4(doc):
         "naujo tiekėjo registracija, esančio tiekėjo redagavimas. Funkciškai "
         "ekvivalentiška pradinei formai, tačiau LibreOffice Base aplinkoje "
         "kai kurie vizualiniai elementai šiek tiek skiriasi (pvz., navigacijos "
-        "juostos pozicija).")
+        "juostos pozicija). Sukurtos formos vaizdas pateiktas 10 paveiksle "
+        "(žr. 10 pav.).")
+    add_image(doc, "img12_form_suppliers.png", width_cm=15.5)
+    add_fig_caption(doc, "10 pav",
+                    "DB4 - frmSuppliers forma tiekėjams (dvieju stulpelių išdėstymas)")
+    add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_p(doc,
         "Apibendrinant ketvirtąjį skyrių galima teigti, kad MS Access ir "
@@ -704,10 +719,10 @@ def add_chapter_5(doc):
         "Dept lauką ir parodo kiekvieno skyriaus produktų skaičių. Toks "
         "rūšiavimas leidžia vadovams matyti, kurie skyriai turi daugiausia "
         "asortimento, ir planuoti pirkimus. Suvestinės pavyzdys pateiktas "
-        "8 paveiksle (žr. 8 pav.) - matoma, kad daugiausia produktų yra "
+        "11 paveiksle (žr. 11 pav.) - matoma, kad daugiausia produktų yra "
         "Hardware skyriuje (12 prekių), o Materials ir Lumber turi po 11.")
     add_image(doc, "img8_rpt_departments.png", width_cm=12)
-    add_fig_caption(doc, "8 pav", "rptDepartments ataskaita - produktų skaičius")
+    add_fig_caption(doc, "11 pav", "rptDepartments ataskaita - produktų skaičius")
     add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_p(doc,
@@ -736,7 +751,12 @@ def add_chapter_5(doc):
         "Ataskaitos struktūra padalinta į skyrius pagal šalį - JAV (USA) "
         "tiekėjai grupuojami pirmiausia, paskui Kanados, Kinijos. Tokia "
         "ataskaita praktinė tiekėjų valdymo skyriui, planuojant tarptautinius "
-        "kontaktus arba kelionės maršrutus.")
+        "kontaktus arba kelionės maršrutus. Ataskaitos vaizdas pateiktas "
+        "12 paveiksle (žr. 12 pav.).")
+    add_image(doc, "img13_rpt_suppliers_country.png", width_cm=15.5)
+    add_fig_caption(doc, "12 pav",
+                    "DB5 - Tiekėjų kontaktinė ataskaita pagal šalį ir miestą")
+    add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_h2(doc, "5.3. Inventoriaus pagal kilmę ataskaita")
     add_p(doc,
@@ -748,7 +768,12 @@ def add_chapter_5(doc):
         "i.Origin, i.SupplierID. Ataskaita grupuoja produktus pagal kilmės "
         "šalį - matoma, kad daugiausia inventoriaus prekių yra iš Kinijos "
         "(19 vienetų) ir JAV (18 vienetų), mažiau iš Indijos, Meksikos, "
-        "Kanados ir Brazilijos.")
+        "Kanados ir Brazilijos. Ataskaitos vaizdas pateiktas 13 paveiksle "
+        "(žr. 13 pav.).")
+    add_image(doc, "img14_rpt_origin_inventory.png", width_cm=15.5)
+    add_fig_caption(doc, "13 pav",
+                    "DB5 - Inventoriaus ataskaita pagal kilmės šalį")
+    add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_p(doc,
         "Apibendrinant penktąjį skyrių, ataskaitos yra galingas MS Access ir "
@@ -804,12 +829,12 @@ def add_chapter_6(doc):
 
     add_p(doc,
         "Visų trijų užklausų rezultatų kombinuotas pavyzdys (skaičiavimai "
-        "pagal kilmės šalį) pateiktas 9 paveiksle (žr. 9 pav.). Lentelėje "
+        "pagal kilmės šalį) pateiktas 14 paveiksle (žr. 14 pav.). Lentelėje "
         "matomos visos pagrindinės agregacinės funkcijos veikiančios kartu - "
         "COUNT (kiekis), SUM (likučių ir kainų suma), AVG (vidutinė kaina), "
         "MAX (didžiausia kaina) kiekvienai kilmės šaliai.")
     add_image(doc, "img9_db6_calc.png", width_cm=15.5)
-    add_fig_caption(doc, "9 pav",
+    add_fig_caption(doc, "14 pav",
                     "DB6 skaičiavimo užklausų rezultatai pagal kilmės šalį")
     add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
@@ -819,21 +844,36 @@ def add_chapter_6(doc):
         "tiekėjui. Ataskaitoje grupuojama pagal SupplierID, o grupės poraštėje "
         "yra =Sum([UnitsInStock]*[RetailPrice]). Galiausiai, ataskaitos "
         "poraštėje matoma bendra visų tiekėjų suma. Tokia ataskaita naudinga "
-        "tiekėjų vertinimui pagal jų indėlį į bendrą inventoriaus vertę.")
+        "tiekėjų vertinimui pagal jų indėlį į bendrą inventoriaus vertę. "
+        "Ataskaitos vaizdas pateiktas 15 paveiksle (žr. 15 pav.).")
+    add_image(doc, "img15_rpt_sum_supplier.png", width_cm=15.5)
+    add_fig_caption(doc, "15 pav",
+                    "DB6 - SUM ataskaita: inventoriaus vertė pagal tiekėjus")
+    add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_p(doc,
         "Antra ataskaita - VIDURKIS - rodo vidutinę produkto kainą pagal "
         "skyrių. Naudojama išraiška =Avg([RetailPrice]) grupės poraštėje. "
         "Ataskaita padeda vadovybei suprasti, kuriuose skyriuose vidutinis "
         "kainų lygis yra aukštesnis arba žemesnis - tai svarbu kainų "
-        "strategijai planuoti.")
+        "strategijai planuoti. Ataskaitos vaizdas pateiktas 16 paveiksle "
+        "(žr. 16 pav.).")
+    add_image(doc, "img16_rpt_avg_dept.png", width_cm=15.5)
+    add_fig_caption(doc, "16 pav",
+                    "DB6 - AVG ataskaita: vidutinė kaina pagal skyrius")
+    add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_p(doc,
         "Trečia ataskaita - MAKSIMALI REIKŠMĖ - parodo brangiausią produktą "
         "kiekvienoje kilmės šalyje. Naudojama =Max([RetailPrice]) išraiška. "
         "Ataskaita kainų lyginamajai analizei tarptautiniu mastu - matoma, "
         "ar konkrečios šalies produkcija turi premium segmento prekių, ar "
-        "tik bazines.")
+        "tik bazines. Ataskaitos vaizdas pateiktas 17 paveiksle "
+        "(žr. 17 pav.).")
+    add_image(doc, "img17_rpt_max_origin.png", width_cm=15.5)
+    add_fig_caption(doc, "17 pav",
+                    "DB6 - MAX ataskaita: brangiausias produktas pagal kilmę")
+    add_src(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_p(doc,
         "Apibendrinant šeštąjį skyrių galima teigti, kad agregacinės funkcijos "
