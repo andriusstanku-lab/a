@@ -826,6 +826,18 @@ def add_chapter_3(doc):
     add_source_note(doc, "Šaltinis: sudaryta autoriaus.")
 
     add_paragraph(doc,
+        "Trečiasis paveikslas iliustruoja siejančią Enrollments lentelę "
+        "su 7 įrašais (žr. 6 pav.). Šios lentelės struktūra parodo, kaip "
+        "išoriniai raktai (StudentID ir CourseID) sieja Students ir Courses "
+        "lenteles per many-to-many ryšį, leidžiantį tą patį studentą "
+        "registruoti į kelis kursus skirtingais semestrais.")
+
+    add_image(doc, "img6_enrollments_data.png", width_cm=15.5)
+    add_figure_caption(doc, "6 pav",
+                       "LibreOffice Base Table Data View - Enrollments lentelė su 7 įrašais")
+    add_source_note(doc, "Šaltinis: sudaryta autoriaus.")
+
+    add_paragraph(doc,
         "LibreOffice Base sąsaja kiek paprastesnė už Access, tačiau visos "
         "pagrindinės funkcijos prieinamos. SQL View rėžimas leidžia rašyti "
         "CREATE TABLE komandas tiesiogiai, kas naudinga pažangesniems "

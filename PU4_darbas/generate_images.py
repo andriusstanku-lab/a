@@ -525,3 +525,140 @@ if __name__ == "__main__":
     create_libre_design()
     create_libre_datasheet()
     print("\nVisi paveikslai sugeneruoti.")
+
+
+
+
+# ============================================================
+# REALISTISKO DATASHEET VIEW STILIAUS PAVEIKSLAI
+# ============================================================
+# Sukurti pagal vartotojo nuotrauku stiliu - paprastas datasheet,
+# be ribbon, su <AutoField> zyma apacioje, lietuviski simboliai.
+
+def create_real_datasheet(filename, headers_widths, rows):
+    """Sukuria datasheet view stiliaus paveiksla, kuris vizualiai atitinka
+    vartotojo screenshot'us is LibreOffice Base / Access datasheet view."""
+    total_w = sum(w for _, w in headers_widths)
+    n_rows = len(rows)
+    header_h = 30
+    row_h = 30
+    autofield_h = 30
+    margin = 20
+
+    img_w = total_w + 2 * margin
+    img_h = margin + header_h + n_rows * row_h + autofield_h + margin
+
+    img = Image.new("RGB", (img_w, img_h), "white")
+    d = ImageDraw.Draw(img)
+
+    header_font = font(13, bold=True)
+    cell_font = font(13)
+
+    # Antraste (paryskintas pilkas fonas)
+    d.rectangle([margin, margin, margin + total_w, margin + header_h],
+                fill="#E8E8E8", outline="#888888")
+    cx = margin
+    for label, cw in headers_widths:
+        d.text((cx + 8, margin + 7), label, font=header_font, fill="black")
+        d.line([(cx + cw, margin),
+                (cx + cw, margin + header_h + n_rows * row_h)],
+               fill="#888888", width=1)
+        cx += cw
+
+    # Eilutes
+    for ri, row_data in enumerate(rows):
+        ry = margin + header_h + ri * row_h
+        d.rectangle([margin, ry, margin + total_w, ry + row_h],
+                    fill="white", outline="#CCCCCC")
+        cx = margin
+        for ci, val in enumerate(row_data):
+            d.text((cx + 8, ry + 7), str(val), font=cell_font, fill="black")
+            cx += headers_widths[ci][1]
+
+    # Isorinis remas
+    d.rectangle([margin, margin,
+                 margin + total_w, margin + header_h + n_rows * row_h],
+                outline="#888888", width=1)
+
+    # <AutoField> zyma apacioje
+    autofield_y = margin + header_h + n_rows * row_h
+    d.rectangle([margin, autofield_y,
+                 margin + total_w, autofield_y + autofield_h],
+                fill="#FAFAFA", outline="#CCCCCC")
+    d.text((margin + 8, autofield_y + 7),
+           "<AutoField>", font=cell_font, fill="#888888")
+
+    out = os.path.join(OUT_DIR, filename)
+    img.save(out, "PNG", optimize=True)
+    print(f"Sukurta: {out}")
+
+
+def create_real_students_datasheet():
+    headers = [
+        ("STUDENTID", 100),
+        ("FIRSTNAME", 110),
+        ("LASTNAME", 140),
+        ("EMAIL", 260),
+        ("MAJOR", 230),
+        ("ENROLLMENTYEAR", 160),
+    ]
+    rows = [
+        ("1", "Andrius", "Vargonas",      "andrius.vargonas@knf.vu.lt", "Marketingo technologijos", "2024"),
+        ("2", "Egle",    "Kazlauskaite",  "egle.k@knf.vu.lt",           "Verslo informatika",       "2023"),
+        ("3", "Tomas",   "Petrauskas",    "tomas.p@knf.vu.lt",          "Marketingo technologijos", "2024"),
+        ("4", "Ruta",    "Jonaityte",     "ruta.j@knf.vu.lt",           "Finansu valdymas",         "2025"),
+        ("5", "Mantas",  "Bagdonas",      "mantas.b@knf.vu.lt",         "Verslo informatika",       "2023"),
+        ("6", "Lina",    "Sakalauskaite", "lina.s@knf.vu.lt",           "Marketingo technologijos", "2025"),
+    ]
+    create_real_datasheet("img3_access_data.png", headers, rows)
+
+
+def create_real_courses_datasheet():
+    headers = [
+        ("COURSEID", 100),
+        ("COURSENAME", 380),
+        ("CREDITS", 100),
+        ("DEPARTMENT", 240),
+    ]
+    rows = [
+        ("101", "Skaitmeninio marketingo pagrindai",      "6", "Marketingo katedra"),
+        ("102", "Duomenu bazes ir informacijos sistemos", "6", "Informatikos katedra"),
+        ("103", "Vartotoju elgsenos analize",             "5", "Marketingo katedra"),
+        ("104", "Verslo statistika",                      "6", "Vadybos katedra"),
+        ("105", "Programavimo pagrindai",                 "5", "Informatikos katedra"),
+        ("106", "Marketingo strategija",                  "6", "Marketingo katedra"),
+    ]
+    create_real_datasheet("img5_libre_data.png", headers, rows)
+
+
+def create_real_enrollments_datasheet():
+    headers = [
+        ("ENROLLMENTID", 130),
+        ("STUDENTID", 110),
+        ("COURSEID", 110),
+        ("SEMESTER", 160),
+        ("GRADE", 90),
+    ]
+    rows = [
+        ("1", "1", "101", "2024 rud.", "9.0"),
+        ("2", "1", "102", "2024 rud.", "8.5"),
+        ("3", "1", "103", "2024 pav.", "8.0"),
+        ("4", "2", "102", "2024 rud.", "9.5"),
+        ("5", "2", "105", "2024 pav.", "9.0"),
+        ("6", "3", "101", "2024 rud.", "7.5"),
+        ("7", "3", "106", "2024 pav.", "8.0"),
+    ]
+    create_real_datasheet("img6_enrollments_data.png", headers, rows)
+
+
+def main_real():
+    print("Generuojami realistiski datasheet paveikslai...")
+    create_real_students_datasheet()
+    create_real_courses_datasheet()
+    create_real_enrollments_datasheet()
+    print("Baigta.")
+
+
+import sys as _sys
+if __name__ == "__main__" and len(_sys.argv) > 1 and _sys.argv[1] == "real":
+    main_real()
