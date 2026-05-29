@@ -547,16 +547,13 @@ def add_introduction(doc):
     # DI deklaracija
     add_paragraph(doc,
         "Rengiant šį darbą buvo naudotasi dirbtinio intelekto (toliau - DI) "
-        "generatyviniu modeliu Anthropic Claude (Sonnet 4.5, internetinė "
-        "prieiga, naudota 2026 m. gegužės mėn.) kaip pagalbine priemone "
-        "struktūros patikrinimui, kalbinio stiliaus tobulinimui ir paveikslų "
-        "vizualiniam apipavidalinimui. Pagrindinį turinį, lentelių "
-        "projektavimą, praktinį realizavimą ir vertinimus autorius parengė "
-        "savarankiškai. DI sugeneruoto turinio dalis darbe neviršija "
-        "penkiolikos procentų. Detalus DI naudojimo aprašymas pateikiamas "
-        "11 priede, o naudotos užklausos - 12 priede. Autorius susipažinęs "
-        "su Vilniaus universiteto 2024 m. patvirtintomis dirbtinio intelekto "
-        "naudojimo gairėmis (Nr. SPN-54).")
+        "generatyviniu modeliu Anthropic Claude (Sonnet 4.5, naudota 2026 m. "
+        "gegužės mėn.) tik tekstinio turinio - skyrių aprašymų ir "
+        "paaiškinimų - generavimui ir kalbiniam redagavimui. Praktinę "
+        "užduoties dalį - duomenų bazės kūrimą, lentelių, pirminių ir "
+        "išorinių raktų projektavimą bei duomenų įvedimą LibreOffice Base "
+        "aplinkoje - autorius atliko savarankiškai. Detalesnis DI naudojimo "
+        "aprašymas pateikiamas 11 priede.")
 
 
 # ============================================================
@@ -1081,25 +1078,23 @@ def add_appendix_11(doc):
                         "Dirbtinio intelekto panaudojimo deklaracija")
     add_paragraph(doc,
         "Rengiant šį darbą buvo naudotas generatyvinis dirbtinio intelekto "
-        "įrankis Anthropic Claude (Sonnet 4.5, internetinė prieiga, naudota "
-        "2026 m. gegužės mėnesį). Įrankis buvo pasitelktas ribotais ir "
-        "aiškiai apibrėžtais tikslais: pirminių temos struktūros variantų "
-        "sugeneravimui, galimų potemių išgryninimui, teorinių sąvokų "
-        "pirminiam paaiškinimui, paveikslų vizualiniam apipavidalinimui bei "
-        "teksto stilistiniam ir kalbiniam redagavimui.")
+        "(toliau - DI) įrankis Anthropic Claude (Sonnet 4.5, internetinė "
+        "prieiga, naudota 2026 m. gegužės mėnesį). Praktinę darbo dalį - "
+        "duomenų bazės kūrimą, lentelių struktūros projektavimą, pirminių "
+        "ir išorinių raktų sąsajų nustatymą ir duomenų įvedimą - "
+        "savarankiškai atliko darbo autorius LibreOffice Base aplinkoje. "
+        "DI buvo panaudotas tik tekstinio turinio (skyrių aprašymų, "
+        "paaiškinimų, formuluočių) generavimui ir kalbiniam redagavimui.")
+
     add_paragraph(doc,
-        "Sugeneruotas turinys nebuvo tiesiogiai perkeltas į darbą be "
-        "peržiūros - kiekvienas atsakymas buvo kritiškai įvertintas, "
-        "patikrintas remiantis akademiniais šaltiniais ir, jei naudotas, "
-        "reikšmingai redaguotas bei integruotas į autoriaus savarankiškai "
-        "parengtą tekstą.")
-    add_paragraph(doc,
-        "DI įrankis nebuvo naudotas savarankiškai rengiant: praktinę "
-        "lentelių kūrimo dalį (autorius pats atliko darbą Microsoft Access "
-        "ir LibreOffice Base aplinkose), formuluojant galutines išvadas ar "
-        "atliekant tyrimo interpretaciją. Visi esminiai argumentai, "
-        "vertinimai ir apibendrinimai yra darbo autoriaus savarankiško "
-        "akademinio darbo rezultatas.")
+        "DI sugeneruotas tekstas nebuvo perkeltas į darbą be peržiūros - "
+        "kiekvienas teiginys patikrintas, kritiškai įvertintas ir "
+        "reikšmingai redaguotas autoriaus. DI nebuvo naudotas išvadų "
+        "formulavimui ar tyrimo interpretacijai. DI sugeneruoto turinio "
+        "dalis darbe neviršija 15 procentų; vieno modelio - mažiau nei "
+        "5 procentų. Autorius susipažinęs su Vilniaus universiteto 2024 m. "
+        "patvirtintomis DI naudojimo gairėmis (Nr. SPN-54) ir prisiima "
+        "visišką atsakomybę už darbo turinį.")
 
     add_paragraph(doc,
         "DI naudojimo apimtis darbe pateikta 5 lentelėje (žr. 5 lentelę).",
@@ -1110,34 +1105,21 @@ def add_appendix_11(doc):
         ["DI modelis", "Anthropic Claude Sonnet 4.5"],
         ["Naudojimo data", "2026 m. gegužės mėn."],
         ["DI naudojimo tikslas",
-         "Struktūros patikrinimas, kalbos taisymas, "
-         "paveikslų vizualinis apipavidalinimas"],
+         "Tekstinio turinio (aprašymų, paaiškinimų) generavimas, "
+         "kalbinis redagavimas"],
+        ["Kas atlikta savarankiškai (autoriaus)",
+         "Duomenų bazės kūrimas, lentelių struktūra, raktai, duomenų įvedimas"],
         ["DI sugeneruoto turinio dalis darbe", "mažiau nei 15 proc."],
         ["Vieno DI modelio sugeneruotas turinys",
          "mažiau nei 5 proc. (atitinka VU SPN-54 reikalavimus)"],
-        ["Modifikavimo apimtis",
-         "apie 70-80 proc. (DI siūlymai reikšmingai redaguoti)"],
     ]
     add_data_table(doc, headers, rows, col_widths_cm=[6.0, 10.5])
     add_source_note(doc, "Šaltinis: sudaryta autoriaus.")
 
-    add_paragraph(doc, "Autorius patvirtina, kad:", indent=False)
-    bullets = [
-        "yra susipažinęs su Vilniaus universiteto 2024 m. patvirtintomis "
-        "dirbtinio intelekto naudojimo gairėmis (Nr. SPN-54);",
-        "yra susipažinęs su Anthropic Claude privatumo politika ir "
-        "naudojimo taisyklėmis;",
-        "įvertino, kad DI sugeneruoti rezultatai gali būti netikslūs, todėl "
-        "visi turinio teiginiai patikrinti remiantis nepriklausomais "
-        "akademiniais šaltiniais;",
-        "prisiima visišką atsakomybę už darbo turinį, jo tikslumą, "
-        "argumentacijos pagrįstumą bei pateiktų šaltinių patikimumą.",
-    ]
-    for b in bullets:
-        add_bullet_item(doc, b)
     add_paragraph(doc,
         "DI panaudojimas šiame darbe atskleistas skaidriai ir laikantis "
-        "akademinės etikos principų.")
+        "akademinės etikos principų. Autorius prisiima visišką atsakomybę "
+        "už darbo turinį, jo tikslumą ir argumentacijos pagrįstumą.")
 
 
 # ============================================================

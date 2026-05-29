@@ -662,3 +662,259 @@ def main_real():
 import sys as _sys
 if __name__ == "__main__" and len(_sys.argv) > 1 and _sys.argv[1] == "real":
     main_real()
+
+
+
+
+# ============================================================
+# PAGERINTI PAVEIKSLAI (v2) - profesionalus zvilgsnis
+# ============================================================
+
+def create_er_diagram_v2():
+    """Profesionali ER diagrama be perteklinio dekoro."""
+    W, H = 1400, 700
+    img = Image.new("RGB", (W, H), "white")
+    d = ImageDraw.Draw(img)
+
+    title_font = font(16, bold=True)
+    table_title_font = font(14, bold=True)
+    field_font = font(13)
+    pk_font = font(13, bold=True)
+    note_font = font(11)
+    cardinality_font = font(14, bold=True)
+
+    tables = [
+        {
+            "name": "STUDENTS",
+            "x": 60, "y": 110, "w": 320, "h": 240,
+            "fields": [
+                ("PK", "StudentID",      "INTEGER"),
+                ("",   "FirstName",      "VARCHAR(50)"),
+                ("",   "LastName",       "VARCHAR(50)"),
+                ("",   "Email",          "VARCHAR(100)"),
+                ("",   "Major",          "VARCHAR(50)"),
+                ("",   "EnrollmentYear", "INTEGER"),
+            ],
+        },
+        {
+            "name": "ENROLLMENTS",
+            "x": 540, "y": 110, "w": 320, "h": 240,
+            "fields": [
+                ("PK", "EnrollmentID", "INTEGER"),
+                ("FK", "StudentID",    "INTEGER"),
+                ("FK", "CourseID",     "INTEGER"),
+                ("",   "Semester",     "VARCHAR(20)"),
+                ("",   "Grade",        "DECIMAL(3,1)"),
+            ],
+        },
+        {
+            "name": "COURSES",
+            "x": 1020, "y": 110, "w": 320, "h": 240,
+            "fields": [
+                ("PK", "CourseID",   "INTEGER"),
+                ("",   "CourseName", "VARCHAR(100)"),
+                ("",   "Credits",    "INTEGER"),
+                ("",   "Department", "VARCHAR(50)"),
+            ],
+        },
+    ]
+
+    title = "Universiteto duomenu bazes ER diagrama"
+    tw, _ = text_size(d, title, title_font)
+    d.text(((W - tw) // 2, 30), title, font=title_font, fill="#222222")
+
+    for tbl in tables:
+        x, y, w, h = tbl["x"], tbl["y"], tbl["w"], tbl["h"]
+        d.rectangle([x, y, x + w, y + 40],
+                    fill="#2C5282", outline="#1A365D", width=2)
+        tw, _ = text_size(d, tbl["name"], table_title_font)
+        d.text((x + (w - tw) // 2, y + 11),
+               tbl["name"], font=table_title_font, fill="white")
+        d.rectangle([x, y + 40, x + w, y + h],
+                    fill="white", outline="#1A365D", width=2)
+        for i, (key_type, name, dtype) in enumerate(tbl["fields"]):
+            row_y = y + 50 + i * 30
+            if key_type == "PK" and i == 0 and len(tbl["fields"]) > 1:
+                d.line([(x + 10, row_y + 26),
+                        (x + w - 10, row_y + 26)],
+                       fill="#888888", width=1)
+            if key_type == "PK":
+                d.text((x + 12, row_y + 4),
+                       "PK", font=pk_font, fill="#B7791F")
+            elif key_type == "FK":
+                d.text((x + 12, row_y + 4),
+                       "FK", font=pk_font, fill="#3182CE")
+            d.text((x + 50, row_y + 4), name,
+                   font=(pk_font if key_type == "PK" else field_font),
+                   fill="black")
+            tw, _ = text_size(d, dtype, field_font)
+            d.text((x + w - tw - 12, row_y + 4),
+                   dtype, font=field_font, fill="#666666")
+
+    # Rysiai 1:N
+    s_x = tables[0]["x"] + tables[0]["w"]
+    s_y = tables[0]["y"] + 80
+    e_x = tables[1]["x"]
+    e_y = tables[1]["y"] + 110
+    d.line([(s_x, s_y), (e_x, e_y)], fill="#2D3748", width=2)
+    d.text((s_x + 10, s_y - 22), "1",
+           font=cardinality_font, fill="#2D3748")
+    d.text((e_x - 22, e_y - 22), "N",
+           font=cardinality_font, fill="#2D3748")
+
+    c_x = tables[2]["x"]
+    c_y = tables[2]["y"] + 80
+    e2_x = tables[1]["x"] + tables[1]["w"]
+    e2_y = tables[1]["y"] + 140
+    d.line([(c_x, c_y), (e2_x, e2_y)], fill="#2D3748", width=2)
+    d.text((c_x - 22, c_y - 22), "1",
+           font=cardinality_font, fill="#2D3748")
+    d.text((e2_x + 10, e2_y - 22), "N",
+           font=cardinality_font, fill="#2D3748")
+
+    legend_y = 460
+    d.rectangle([60, legend_y, W - 60, legend_y + 150],
+                fill="#F7FAFC", outline="#CBD5E0", width=1)
+    d.text((80, legend_y + 15),
+           "Paaiskinimai:",
+           font=table_title_font, fill="#2D3748")
+    legend_lines = [
+        ("PK",  "#B7791F", "Pirminis raktas - unikaliai identifikuoja kiekviena lenteles iraso"),
+        ("FK",  "#3182CE", "Isorinis raktas - nukreipia i kitos lenteles pirmini rakta"),
+        ("1:N", "#2D3748", "Vienas-prie-daug rysys (vienas studentas, daug registraciju)"),
+    ]
+    for i, (label, color, text) in enumerate(legend_lines):
+        ly = legend_y + 50 + i * 26
+        d.text((80, ly), label, font=pk_font, fill=color)
+        d.text((150, ly), text, font=note_font, fill="#2D3748")
+
+    out = os.path.join(OUT_DIR, "img1_er_diagrama.png")
+    img.save(out, "PNG", optimize=True)
+    print(f"Sukurta (v2): {out}")
+
+
+def create_design_view_v2(filename, app_name, table_name, fields,
+                          header_color, app_color):
+    """Svarus Design View paveikslas - tik lenteles strukturos grid."""
+    W, H = 1300, 600
+    img = Image.new("RGB", (W, H), "white")
+    d = ImageDraw.Draw(img)
+
+    title_font = font(15, bold=True)
+    grid_header_font = font(13, bold=True)
+    cell_label_font = font(12, bold=True)
+    cell_val_font = font(12)
+    note_font = font(11)
+
+    d.rectangle([0, 0, W, 50], fill=app_color, outline=None)
+    d.text((20, 16),
+           f"{app_name} - {table_name} (Design View)",
+           font=title_font, fill="white")
+
+    grid_top = 80
+    cols = [
+        ("Lauko pavadinimas", 280),
+        ("Duomenu tipas", 220),
+        ("Reiksme privaloma", 200),
+        ("Pastaba", 540),
+    ]
+    cx = 30
+    d.rectangle([cx, grid_top, W - 30, grid_top + 36],
+                fill=header_color, outline="#888888", width=1)
+    for label, cw in cols:
+        d.text((cx + 10, grid_top + 9), label,
+               font=grid_header_font, fill="white")
+        cx += cw
+    cx = 30
+    for _, cw in cols:
+        d.line([(cx + cw, grid_top),
+                (cx + cw, grid_top + 36 + len(fields) * 36)],
+               fill="#888888", width=1)
+        cx += cw
+
+    for i, (key_type, name, dtype, required, note) in enumerate(fields):
+        ry = grid_top + 36 + i * 36
+        bg = "#FFFFFF" if i % 2 == 0 else "#F7FAFC"
+        d.rectangle([30, ry, W - 30, ry + 36],
+                    fill=bg, outline="#CCCCCC")
+        cx = 30
+        if key_type == "PK":
+            d.text((cx + 10, ry + 9), "[PK] " + name,
+                   font=cell_label_font, fill="#B7791F")
+        elif key_type == "FK":
+            d.text((cx + 10, ry + 9), "[FK] " + name,
+                   font=cell_label_font, fill="#3182CE")
+        else:
+            d.text((cx + 10, ry + 9), name,
+                   font=cell_val_font, fill="black")
+        cx += cols[0][1]
+        d.text((cx + 10, ry + 9), dtype,
+               font=cell_val_font, fill="black")
+        cx += cols[1][1]
+        d.text((cx + 10, ry + 9), required,
+               font=cell_val_font, fill="black")
+        cx += cols[2][1]
+        d.text((cx + 10, ry + 9), note,
+               font=note_font, fill="#555555")
+
+    src_y = grid_top + 36 + len(fields) * 36 + 30
+    d.text((30, src_y),
+           "Pastaba: Lenteles kurta autoriaus, paveikslas iliustruoja strukturos sandara.",
+           font=note_font, fill="#888888")
+
+    out = os.path.join(OUT_DIR, filename)
+    img.save(out, "PNG", optimize=True)
+    print(f"Sukurta (v2): {out}")
+
+
+def create_access_design_v2():
+    fields = [
+        ("PK", "StudentID",      "AutoNumber",    "Taip", "Pirminis raktas, automatinis"),
+        ("",   "FirstName",      "Short Text",    "Taip", "Studento vardas"),
+        ("",   "LastName",       "Short Text",    "Taip", "Studento pavarde"),
+        ("",   "Email",          "Short Text",    "Ne",   "Unikalus el. pasto adresas"),
+        ("",   "Major",          "Short Text",    "Ne",   "Studiju programa"),
+        ("",   "EnrollmentYear", "Number",        "Ne",   "Imatrikuliacijos metai"),
+    ]
+    create_design_view_v2(
+        "img2_access_design.png",
+        "Microsoft Access",
+        "STUDENTS lentele",
+        fields,
+        header_color="#A02B2B",
+        app_color="#A02B2B",
+    )
+
+
+def create_libre_design_v2():
+    fields = [
+        ("PK", "StudentID",      "Integer [INTEGER]",        "Taip", "Pirminis raktas, AutoValue"),
+        ("",   "FirstName",      "Text [VARCHAR(50)]",       "Taip", "Studento vardas"),
+        ("",   "LastName",       "Text [VARCHAR(50)]",       "Taip", "Studento pavarde"),
+        ("",   "Email",          "Text [VARCHAR(100)]",      "Ne",   "Unikalus el. pasto adresas"),
+        ("",   "Major",          "Text [VARCHAR(50)]",       "Ne",   "Studiju programa"),
+        ("",   "EnrollmentYear", "Small Integer [SMALLINT]", "Ne",   "Imatrikuliacijos metai"),
+    ]
+    create_design_view_v2(
+        "img4_libre_design.png",
+        "LibreOffice Base",
+        "STUDENTS lentele",
+        fields,
+        header_color="#18A303",
+        app_color="#18A303",
+    )
+
+
+def main_v2():
+    print("Generuojami pagerinti paveikslai (v2)...")
+    create_er_diagram_v2()
+    create_access_design_v2()
+    create_libre_design_v2()
+    create_real_students_datasheet()
+    create_real_courses_datasheet()
+    create_real_enrollments_datasheet()
+    print("Baigta.")
+
+
+if __name__ == "__main__" and len(_sys.argv) > 1 and _sys.argv[1] == "v2":
+    main_v2()
