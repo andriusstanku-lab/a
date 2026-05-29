@@ -1,4 +1,4 @@
-"""generate_odb_pu7.py - Sukuria DB1.odb is jau egzistuojanciu HSQLDB failu."""
+"""generate_odb_pu7.py - Sukuria 6 .odb failus is HSQLDB scriptu (db1..db6 final)."""
 import os, zipfile, time
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -88,14 +88,20 @@ def build_odb(db_dir, output_filename, title):
 
 
 if __name__ == "__main__":
-    # Sukursim 5 odb failus is to paties HSQLDB - bet skirtingu pavadinimu,
-    # kad atspindetume DB1, DB3, DB4, DB5, DB6
-    titles = {
-        "DB1.odb": "DB1 - Lenteliu analize (PU7)",
-        "DB3.odb": "DB3 - Formu kurimas (PU7)",
-        "DB4.odb": "DB4 - Uzklausu kurimas (PU7)",
-        "DB5.odb": "DB5 - Ataskaitu kurimas (PU7)",
-        "DB6.odb": "DB6 - Skaiciavimai (PU7)",
-    }
-    for name, title in titles.items():
-        build_odb("dbinventory_db", name, title)
+    # Sukursime 6 .odb failus is atskiru db1..db6 katalogu su tinkamu turiniu:
+    # DB1 - tik 3 lenteles
+    # DB2 - 3 lenteles + 3 uzklausos (Department, Supplier, Date)
+    # DB3 - tik 3 lenteles (formos LibreOffice'e kuriamos atskirai)
+    # DB4 - 3 lenteles + 8 uzklausos
+    # DB5 - 3 lenteles + 8 uzklausos (ataskaitos kuriamos LibreOffice'e atskirai)
+    # DB6 - 3 lenteles + 11 uzklausu (8 + 3 skaiciavimo)
+    builds = [
+        ("db1_final", "DB1.odb", "DB1 - Lenteliu analize (PU7)"),
+        ("db2_final", "DB2.odb", "DB2 - Uzklausu vediklis (PU7)"),
+        ("db3_final", "DB3.odb", "DB3 - Formu kurimas (PU7)"),
+        ("db4_final", "DB4.odb", "DB4 - Uzklausu kurimas (PU7)"),
+        ("db5_final", "DB5.odb", "DB5 - Ataskaitu kurimas (PU7)"),
+        ("db6_final", "DB6.odb", "DB6 - Skaiciavimai (PU7)"),
+    ]
+    for db_dir, name, title in builds:
+        build_odb(db_dir, name, title)
