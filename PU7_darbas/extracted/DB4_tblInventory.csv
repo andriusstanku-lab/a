@@ -1,0 +1,52 @@
+UnitsInStock,TargetInventory,ReorderLevel,LastOrdered,OurUnitCost,RetailPrice,ProductCode,Dept,SupplierID,ItemDescription,Location,Rack,Origin
+22,25,10,2015-06-04 00:00:00,$35.00,$41.00,bathhw-2,Bathroom,WOODSTOCK,"Windsor Model 24"" Double Towel Bar Brushed Nickel",Showroom,2-3a,China
+18,25,10,2015-06-04 00:00:00,$27.00,$31.00,bathhw-3,Bathroom,WOODSTOCK,"Windsor Model 24"" Single Towel Bar Brushed Nickel",Showroom,2-3b,China
+5,25,10,2015-06-04 00:00:00,$87.00,$109.00,bathhw-32,Bathroom,MALOOF,"4 in. 2-Handle Low-Arc 4"" Bathroom Faucet in Vibrant Brushed Nickel",Showroom,2-3c,China
+6,25,10,2015-05-28 00:00:00,$388.00,$420.00,bathhw-34,Bathroom,WOODSTOCK,Antique 8 in. 2-Handle Low Arc Bathroom Faucet Polished Brass,Showroom,2-3d,China
+6,25,10,2015-05-28 00:00:00,$22.00,$29.00,bathhw-4,Bathroom,WOODSTOCK,"Edinburgh Model 24"" Double Towel Bar Brass",Showroom,2-3c,China
+14,25,10,2015-05-28 00:00:00,$14.00,$19.00,bathhw-5,Bathroom,WOODSTOCK,"Edinburgh Model 24"" Single Towel Bar Brass",Showroom,2-3d,China
+8,25,10,2015-05-21 00:00:00,$6.00,$12.00,bathhw-6,Bathroom,WOODSTOCK,"Albany Model 24"" Double Towel Bar Plastic",Showroom,2-3e,China
+8,25,10,2015-05-21 00:00:00,$5.00,$9.00,bathhw-7,Bathroom,WOODSTOCK,"Albany Model 24"" Single Towel Bar Plastic",Showroom,2-3f,China
+5,25,10,2015-05-21 00:00:00,$350.00,$425.00,deck-32,Deck Patio,KER,White Painted Metal and Glass Patio Chair and Table Set,Basement,5,Brazil
+8,25,10,2015-05-21 00:00:00,$340.00,$415.00,deck-34,Deck Patio,KER,Black Painted Metal and Glass Patio Chair and Table Set,Basement,5,Brazil
+15,50,25,2015-06-04 00:00:00,$7.50,$8.99,dk-psg-01,Materials,PUGG,Brilliant Chrome Privacy Knob,Showroom,3,China
+12,50,25,2015-06-04 00:00:00,$5.50,$7.99,dk-psg-02,Materials,PUGG,Brilliant Brass Privacy Knob,Showroom,3,China
+16,50,25,2015-06-04 00:00:00,$9.50,$10.99,dk-psg-03,Materials,PUGG,Brilliant Brushed Nickel Privacy Knob,Showroom,3,China
+6,50,25,2015-06-04 00:00:00,$7.50,$8.99,dk-psg-11,Materials,PUGG,Cosgrove Chrome Privacy Knob,Showroom,3,China
+12,50,25,2015-06-04 00:00:00,$5.50,$7.99,dk-psg-12,Materials,PUGG,Cosgrove Brass Privacy Knob,Showroom,3,China
+18,50,25,2015-06-04 00:00:00,$9.50,$10.99,dk-psg-13,Materials,PUGG,Cosgrove Brushed Nickel Privacy Knob,Showroom,3,China
+35,100,50,2015-06-04 00:00:00,$6.32,$7.49,hinge-12,Hardware,PUGG,Nickel-Plated Face Frame Hinge,Showroom,11-3a,China
+88,100,50,2015-05-28 00:00:00,$4.32,$5.00,hinge-14,Hardware,PUGG,Self-Closing Face Frame Hinge,Showroom,11-3b,China
+88,100,50,2015-05-28 00:00:00,$4.32,$5.00,hinge-15,Hardware,PUGG,Self-Closing Face Frame Hinge,Showroom,11-3b,China
+0,100,50,2015-05-21 00:00:00,$1.75,$2.39,hinge-16,Hardware,WOODSTOCK,Brass Flat-Tipped Butt Hinge,Showroom,11-3c,Mexico
+64,100,50,2015-05-21 00:00:00,$0.99,$1.35,hinge-18,Hardware,PUGG,Back to Back Wraparound Insert Hinge,Showroom,11-3d,Mexico
+12,100,50,2015-05-21 00:00:00,$2.22,$3.55,hinge-22,Hardware,PUGG,Soft Close Clip Top Overlay Hinge,Showroom,11-3e,UK
+45,100,50,2015-06-04 00:00:00,$3.55,$5.65,hinge-24,Hardware,PUGG,Concealed Double Jointed Hinge,Showroom,11-3f,USA
+88,100,50,2015-05-28 00:00:00,$4.32,$5.00,hinge-25,Hardware,PUGG,Self-Closing Face Frame Hinge,Showroom,11-3b,China
+49,100,50,2015-06-04 00:00:00,$2.75,$3.55,hinge-26,Hardware,PUGG,Variable Overlay Decorative Hinge,Showroom,11-3g,USA
+52,100,50,2015-06-04 00:00:00,$2.29,$4.32,hinge-28,Hardware,PUGG,Snap Closing Semi Concealed Hinge,Showroom,12-3a,Germany
+45,50,25,2015-05-21 00:00:00,$3.23,$5.65,hinge-32,Hardware,PUGG,Brass Butler Tray Table Hinge,Showroom,12-3b,Mexico
+22,50,25,2015-05-28 00:00:00,$12.43,$15.99,hinge-46,Hardware,PUGG,"Slotted 36"" Brass Piano Hinge",Showroom,13-1a,China
+45,50,25,2015-05-28 00:00:00,$28.00,$33.00,hmdecor-16,Décor,KER,"White Faux Wood Blind, 2 in. Slats, 35 in. W x 64 in. L",Showroom,16,Canada
+12,50,25,2015-05-28 00:00:00,$26.00,$31.00,hmdecor-18,Décor,KER,"White Faux Wood Blind, 2 in. Slats, 32 in. W x 64 in. L",Showroom,16,Canada
+12,25,10,2015-05-21 00:00:00,$52.43,$108.97,hmdecor-2,Décor,KER,Chocolate 7 ft. 7 in x 10 ft. 10 in Indoor and Outdoor Area Rug,Showroom,4-1a,India
+50,50,25,2015-06-04 00:00:00,$25.00,$29.00,hmdecor-25,Décor,KER,"White Faux Wood Blind, 2 in. Slats, 28 in. W x 54 in. L",Showroom,16,Canada
+6,25,10,2015-05-21 00:00:00,$42.00,$56.00,hmdecor-4,Décor,KER,Ebony 9 Ft. 9 In. x 13 Ft. 9 In. Area Rug,Showroom,4-1a,India
+9,25,10,2015-05-21 00:00:00,$67.43,$97.99,hmdecor-6,Décor,KER,Daisy Print 7 ft. 9 in. x 10 ft. 10 in. Indoor / Outdoor Area Rug,Showroom,4-1a,India
+9,25,10,2015-05-21 00:00:00,$132.23,$199.00,hmdecor-8,Décor,KER,Braided 8 ft. x 11 ft. Area Rug,Showroom,4-1a,India
+3,50,5,2015-06-04 00:00:00,$50.00,$107.71,pak-ashwt-24,Lumber,ARBORHARVEST,"Project Pack - 24 Board Feet 3/4"" Select White Ash",Shed A,12,USA
+10,50,5,2015-06-04 00:00:00,$40.00,$87.52,pak-baswd-25,Lumber,ARTURO,"Project Pack - 25 Board Feet 3/4"" Select Basswood",Basement,2,USA
+12,50,5,2015-06-04 00:00:00,$52.00,$125.66,pak-btrnt-25,Lumber,GREENE,"Project Pack - 25 Board Feet 3/4"" Select Butternut",Shed A,5,USA
+6,50,5,2015-05-21 00:00:00,$82.00,$171.67,pak-chrbk-25,Lumber,LIMBERT,"Project Pack - 25 Board Feet 3/4"" Select Black Cherry",Shed B,3,USA
+40,50,5,2015-05-21 00:00:00,$67.00,$117.81,pak-mplhd-23,Lumber,ARTURO,"Project Pack - 23 Board Feet 3/4"" Select Hard Maple",Shed B,4,USA
+15,50,5,2015-05-28 00:00:00,$56.00,$102.10,pak-mplrd-25,Lumber,ARTURO,"Project Pack - 25 Board Feet 3/4"" Select Red Maple",Shed B,2,USA
+23,50,5,2015-05-28 00:00:00,$48.00,$109.96,pak-oakrd-23,Lumber,NAKASHIMA,"Project Pack - 23 Board Feet 3/4"" Select Red Oak",Shed C,4,USA
+12,50,5,2015-05-28 00:00:00,$78.00,$139.13,pak-oakwq-23,Lumber,NAKASHIMA,"Project Pack - 23 Board Feet 3/4"" Select Quartersawn White Oak",Shed C,5,USA
+22,50,5,2015-05-21 00:00:00,$49.00,$109.96,pak-oakwt-23,Lumber,NAKASHIMA,"Project Pack - 23 Board Feet 3/4"" Select White Oak",Shed C,2,USA
+23,50,5,2015-05-21 00:00:00,$42.00,$87.52,pak-poptu-25,Lumber,UNDERHILL,"Project Pack - 25 Board Feet 3/4"" Tulip Poplar",Basement,1,USA
+12,50,5,2015-05-21 00:00:00,$81.00,$170.54,pak-walbk-25,Lumber,NORMS,"Project Pack - 25 Board Feet 3/4"" Black Walnut",Shed B,4,USA
+52,100,25,2015-05-21 00:00:00,$182.00,$203.00,win-dbl-3000,Materials,WOODSTOCK,"Fenster Double-Hung Vinyl Window 34-1/4 in. x 57-1/4 in., White, Argon",Mill,5,USA
+22,100,25,2015-05-21 00:00:00,$165.00,$180.00,win-dbl-8000,Materials,WOODSTOCK,"Fenster Double-Hung Vinyl Windows, 32 in. x 62 in. White, Argon",Mill,5,USA
+12,100,25,2015-05-21 00:00:00,$148.00,$167.00,win-dbl-8216,Materials,WOODSTOCK,"Fenster Double-Hung Wood Window, 32 in. x 38 in., Natural, Low E",Mill,5,USA
+23,100,25,2015-05-21 00:00:00,$387.00,$415.00,win-dbl-8217,Materials,WOODSTOCK,"Fenster Double-Hung Wood Twin Window, 32 in. x 54 in., Natural, Low E",Mill,5,USA
+12,25,10,2015-05-21 00:00:00,$750.00,$830.00,win-dbl-9210,Materials,WOODSTOCK,Fenster 21 in. x 45-1/2 in. Venting Deck-Mount Skylight,Mill,6,USA
