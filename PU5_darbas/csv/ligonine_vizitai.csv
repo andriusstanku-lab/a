@@ -1,0 +1,6 @@
+VizitoID,PacientoID,GydytojoID,VizitoData,Diagnoze,GydymoPastabos
+1,1,1,2025-01-10,Hipertenzija,Skirtas gydymas vaistais
+2,2,3,2025-01-12,Apendicitas,Skubi operacija
+3,3,2,2025-01-15,Sloga,Vaistai 7 dienoms
+4,4,5,2025-02-01,Sanario nudegimas,Konsultacija
+5,5,4,2025-02-05,Migrenos priepuolis,Vaistai
