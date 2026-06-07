@@ -1,0 +1,8 @@
+EnrollmentID,StudentID,CourseID,Semester,Grade
+1,1,101,2024 rud.,9.0
+2,1,102,2024 rud.,8.5
+3,1,103,2024 pav.,8.0
+4,2,102,2024 rud.,9.5
+5,2,105,2024 pav.,9.0
+6,3,101,2024 rud.,7.5
+7,3,106,2024 pav.,8.0
